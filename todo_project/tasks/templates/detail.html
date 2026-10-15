@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+            <h3 class="h-left"> Task Details </h3>
+            <h3 class="h-right"> ID: {{ task.id }} </h3>
+
+    </br>
+    </br>
+
+    <hr>
+
+    </div>
+
+    <p> <b> Title </b>: {{ task.title }}   </p>
+
+    {% if task.complete == True %}
+        <p> <b> Completed on </b>: Yes </p>
+    {% else %}
+        <p> <b> Complete </b>: No </p>
+    {% endif %}
+
+</br>
+<a class="w-100 btn-info" href="{% url 'home' %}"> Back to Home </a>
+
+
+{% endblock %}

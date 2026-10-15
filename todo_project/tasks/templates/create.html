@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div>
+        <h3>Create Task</h3>
+        <hr>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <input class = "btn btn-primary" type="submit" value="Create Task">
+        <a class = "w-100 btn btn-info" href="{% url 'home' %}">Cancel</a>
+
+        </form>
+       
+{% endblock %}

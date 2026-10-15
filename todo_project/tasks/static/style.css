@@ -1,0 +1,103 @@
+* style.css */
+
+body{
+background-color: #638CB8;
+}
+
+input{
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+box-sizing: border-box;
+}
+
+input::placeholder {
+color: #d3d3d3;
+}
+/* .submit{
+background-color: #6BA3E8;
+} */
+
+.text-centre{
+text-align: center;
+}
+
+.nav_padding{
+margin-bottom: 60px;
+}
+
+.top_margin{
+margin-top: 10px;
+}
+
+.botton-margin{
+margin-bottom: 10px;
+}
+
+.h_line {
+width:100%;
+height:1px;
+background: #d3d3d3;
+margin-bottom: 20px;
+}
+
+.center-column{
+width:700px;
+margin: 20px auto;
+padding:20px;
+background-color: #fff;
+border-radius: 3px;
+box-shadow: 6px 2px 30px
+0px rgba(0,0,0,0.75);
+}
+
+.item-row{
+background-color: #906abd;
+margin-top: 10px;
+margin-bottom: 10px;
+padding: 20px;
+border-radius: 3px;
+color: #fff;
+font-size: 16px;
+box-shadow: 0px -1px 10px -
+4px rgba(0,0,0,0.75);
+}
+
+.align-right .buttons{
+float: right;
+}
+
+.container{
+    float: right;
+}
+
+.h-left{
+float: left;
+}
+
+.h-right{
+float: right;
+}
+
+.h-centre{
+display: block;
+text-align: center;
+}
+
+.inline{
+display: inline-flex;
+white-space: nowrap;
+}
+
+textarea {
+height: 15vh;
+width: 100%;
+}
+
+.rating-star {
+color: orange;
+}
+
+.footer-bg{
+background-color: #f1f1f1;
+}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        <a class="w-100 btn btn-primary bi-pencil-square" href="{% url 'create' %}"> Create New Task </a>
+        <hr>
+    </div>
+
+    {% for task in tasks %}
+        <div>
+            <h2>{{ task.title }}</h2>
+            <p>{{ task.complete }}</p>
+
+        </br>
+
+        <div class="align-right">
+            <span class="buttons">
+            <a class="btn btn-sm btn-primary bi-eye" href="{% url 'detail' task.id %}"> View Details </a>
+            </span>
+        </br>
+        <hr>
+        </div>
+        </div>
+       
+    {% endfor %}
+    
+{% endblock content %}
