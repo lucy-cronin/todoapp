@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{%load static %}
+
 {% block content %}
 
     <div>
@@ -12,13 +14,44 @@
 
 <p><strong>are you sure you want to delete:</strong></p>
 
+<!--
+
 <p> <b> Title: </b> {{ task.title }} </p>
 
 {% if task.complete %}
     <p> <b> Complete On: </b> Yes </p>
 {% else %}
     <p> <b> Complete: </b> No </p>
+{% endif %} -->
+
+
+<div class="h-right">
+    {% if task.priority == 1 %}
+        <span><p class="btn btn-warning disabled"><strong>High</strong></p></span>
+    {% elif task.priority == 2 %}
+        <span><p class="btn btn-info disabled"><strong>Medium</strong></p></span>
+    {% elif task.priority == 3 %}
+        <span><p class="btn btn-success disabled"><strong>Low</strong></p></span>
+    {% else%}
+        <span><p class="btn btn-danger disabled"><strong>None</strong></p></span>
+    {% endif %}
+
+    </div>
+
+
+<p> <b> Title </b>: {{ task.title }}   </p>
+<p> <b> Type </b>: {{ task.type }}   </p>
+<p> <b> <em> Task Type </em></b>: {{ task.task_type.name }}   </p>
+<p> <b> <em> Suggested Completion Time </em></b>: {{ task.task_type.suggested_completion_time }}   </p> 
+<p> <b> Description </b>: {{ task.description | slice:"35" }}   </p>
+<p> <b> Created At </b>: {{ task.created }}   </p>
+
+{% if task.complete == True %}
+    <p> <b> Completed on </b>: {{ task.complete_date }} </p>
+{% else %}
+    <p> <b> Complete </b>: No </p>
 {% endif %}
+
 
 </br>
 </br>

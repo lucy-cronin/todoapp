@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{%load static %}
+
 {% block content %}
 
     <div>
@@ -8,8 +10,11 @@
     </div>
 
     {% for task in tasks %}
-        <div>
+       <!-- <div>
             <h2>{{ task.title }}</h2>
+            <p>{{ task.type }}</p>
+            <p>{{ task.task_type.name }}</p>
+            <p>{{ task.task_type.suggested_completion_time }}</p>
             <p>{{ task.complete }}</p>
 
         </br>
@@ -23,8 +28,58 @@
         </br>
         <hr>
         </div>
+        </div> -->
+
+        <div class="item-row">
+            <div>
+                {% if task.priority == 1 %}
+                    <span><p class="btn btn-warning disabled"><strong>High</strong></p></span>
+                {% elif task.priority == 2 %}
+                    <span><p class="btn btn-info disabled"><strong>Medium</strong></p></span>
+                {% else %}
+                    <span><p class="btn btn-success disabled"><strong>Low</strong></p></span>
+                {% endif %}
+            </div>
+
+            <div class="text-center">
+                <span class="fa fa-star {% if task.priority <= 1 %}rating-star{% endif %}"></span>
+                <span class="fa fa-star {% if task.priority <= 2 %}rating-star{% endif %}"></span>
+                <span class="fa fa-star {% if task.priority <= 3 %}rating-star{% endif %}"></span>
+
+            </div> 
+
         </div>
-       
+
+        {% if task.complete == True %}
+        <strike><span><strong>Title:</strong>{{task.title}}</span></strike></br>
+        <strike><span><strong>Type:</strong>{{task.type}}</span></strike></br>
+        <strike><span><strong>Task Type:</strong>{{task.task_type.name}}</span></strike></br>
+        <strike><span><strong>Suggested Completion Time:</strong>{{task.task_type.suggested_completion_time}}</span></strike></br>
+        <strike><span><strong>Description:</strong>{{task.description | slice:"35"}}...</span></strike></br>
+        <strike><span><strong>Price:</strong>{{task.price}}</span></strike></br>
+        <strike><span><strong>Created:</strong>{{task.created}}</span></strike></br>
+        <strike><span><strong>Completed On:</strong>{{task.complete_date}}</span></strike></br>
+        {% else %}
+        <span><strong>Title:</strong>{{task.title}}</span></br>
+        <span><strong>Type:</strong>{{task.type}}</span></br>
+        <span><strong>Task Type:</strong>{{task.task_type.name}}</span></br>
+        <span><strong>Suggested Completion Time:</strong>{{task.task_type.suggested_completion_time}}</span></br>
+        <span><strong>Description:</strong>{{task.description | slice:"35"}}...</span></br>
+        <span><strong>Price:</strong>{{task.price}}</span></br>
+        <span><strong>Created:</strong>{{task.created}}</span></br>
+        {% endif %}
+    </br>
+        <div class="align-right">
+            <span class="buttons">
+            <a class="btn btn-sm btn-primary bi-eye" href="{% url 'detail' task.id %}"> View Details </a>
+            <a class="btn btn-sm btn-info bi-pencil-square" href="{% url 'update' task.id %}"> Update Task </a>
+            <a class="btn btn-sm btn-danger bi-trash" href="{% url 'delete' task.id %}"> Delete Task </a>
+            </span>
+        </br>
+        <hr>
+        </div>
+    </div>
+
     {% endfor %}
     
 {% endblock content %}

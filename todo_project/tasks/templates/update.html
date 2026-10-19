@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{%load static %}
+
 {% block content %}
 
     <div>
@@ -14,10 +16,21 @@
     <form method="POST" action="">
         {% csrf_token %}
         <p> <b> Title: </b> {{ form.title }} </p>
-        <p> <b> Complete: </b> {{ form.complete }} </p>
+        <p> <b> Title: </b> {{ form.type }} </p>
+
+        <p> <b> <em>Task Type: </em> </b> {{ form.task_type }} </p>
+        <p class="textarena"> <b> <em>Description: </em> </b> {{ form.description }} </p>
+
+        <div class="inline"> <b>Priority</b>&nbsp;&nbsp;<b>{{ form.priority }}</b></div>
+
+        <div class="inline h-right"> {{form.complete}}&nbsp;&nbsp;<b>Complete</b></div>
+       
+        <p> <b> Price: </b> {{ form.price }} </p>
+
     </br>
-</br>
-<input class="btn btn-success" type="submit" value="Update ToDo">
+    </br>
+
+<input class="btn btn-success" type="submit" value="Update Task">
 <a class="w-100 btn btn-info" href="{% url 'home' %}">Cancel</a>
     </form>
 

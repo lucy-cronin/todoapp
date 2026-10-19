@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{%load static %}
+
 {% block content %}
 
     <div>
@@ -13,13 +15,45 @@
 
     </div>
 
+    <!--
     <p> <b> Title </b>: {{ task.title }}   </p>
+    <p> <b> Type </b>: {{ task.type }}   </p>
+    <p> <b> <em> Task Type </em></b>: {{ task.task_type.name }}   </p>
+    <p> <b> <em> Suggested Completion Time </em></b>: {{ task.task_type.suggested_completion_time }}   </p>
 
     {% if task.complete == True %}
         <p> <b> Completed on </b>: Yes </p>
     {% else %}
         <p> <b> Complete </b>: No </p>
+    {% endif %} -->
+
+    <div class="h-right">
+        {% if task.priority == 1 %}
+            <span><p class="btn btn-warning disabled"><strong>High</strong></p></span>
+        {% elif task.priority == 2 %}
+            <span><p class="btn btn-info disabled"><strong>Medium</strong></p></span>
+        {% elif task.priority == 3 %}
+            <span><p class="btn btn-success disabled"><strong>Low</strong></p></span>
+        {% else%}
+            <span><p class="btn btn-danger disabled"><strong>None</strong></p></span>
+        {% endif %}
+    </div>
+
+    <p><b>Title:</b> {{ task.title }}</p>
+    <p><b>Type:</b> {{ task.type }}</p>
+    <p><b>Task Type:</b> {{ task.task_type.name }}</p>
+    <p><b>Suggested Completion Time:</b> {{ task.task_type.suggested_completion_time }}</p>
+    <p><b>Description:</b> {{ task.get_description }}</p>
+    <p><b>Created:</b> {{ task.created }}</p>
+
+    {% if task.complete == True %}
+        <p><b>Completed on:</b> {{ task.complete_date }}</p>
+    {% else %}
+        <p><b>Complete:</b> No</p>
     {% endif %}
+
+
+
 
 </br>
 <a class="w-100 btn-info" href="{% url 'home' %}"> Back to Home </a>
