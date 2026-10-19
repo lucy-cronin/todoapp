@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        <h3 class="h-left" >Delete Task</h3>
+        <h3 class="h-right" > ID: {{ task.id }}</h3>
+    </div>
+</br>
+</br>
+<hr>
+
+<p><strong>are you sure you want to delete:</strong></p>
+
+<p> <b> Title: </b> {{ task.title }} </p>
+
+{% if task.complete %}
+    <p> <b> Complete On: </b> Yes </p>
+{% else %}
+    <p> <b> Complete: </b> No </p>
+{% endif %}
+
+</br>
+</br>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value=" Confirm Delete ">
+    <a class="w-100 btn btn-info" href="{% url 'home' %}">Cancel</a>
+
+    {%endblock content %}
