@@ -28,3 +28,19 @@ def detail_task(request, pk):
     task = Task.objects.get(id=pk)
     context = {'task': task}
     return render(request, 'detail.html', context)
+
+
+def update_task(request, pk):
+    task = Task.objects.get(id=pk)
+    form = TaskForm(instance=task)
+
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            print('Form is invalid')
+
+    context = {'form': form}
+    return render(request, 'update.html', context)
